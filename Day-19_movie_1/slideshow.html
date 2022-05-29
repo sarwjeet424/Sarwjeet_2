@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fle{
+            display: flex;
+            justify-content:flex-end;
+            gap:50px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="fle">
+        <div><a href="index.html">Home</a></div>
+        <div><a href="signup.html">Signup</a></div>
+        <div><a href="login.html">Login</a></div>
+    </div>
+    <button onclick="star()">Start</button>
+    <button onclick="pause()">Pause</button>
+    <div id="app"></div>
+     
+</body>
+</html>
+
+<script>
+   let arr=JSON.parse(localStorage.getItem("images"))
+   let div=document.querySelector("#app")
+   let i=0;
+
+   let clear;
+     function star(){
+       
+        clear= setInterval(function(){
+             div.innerHTML=null
+            if(i==arr.length){
+                i=0
+            }    
+
+            let a=document.createElement("img")
+            a.src=arr[i]
+            div.append(a)
+            i++
+        },3000)
+
+     }
+
+     function pause(){
+         clearInterval(clear)
+     }
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fle{
+            display: flex;
+            justify-content:flex-end;
+            gap:50px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #grid{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            width: 25%;
+            margin: auto;
+            text-align: center;
+            /* gap:20px; */
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-top: 50px;
+            height: 300px;
+        }
+        button{
+            width: 30%;
+            margin: auto;
+            height: 24px;
+            background-color: teal;
+            color: white;
+            border:0px;
+            border-radius: 5px;
+        }
+        input{
+            height: 24px;
+            width:60%;
+            margin: auto;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="fle">
+        <div><a href="index.html">Home</a></div>
+        <div><a href="signup.html">Signup</a></div>
+        <div><a href="login.html">Login</a></div>
+    </div>
+
+    <div id="grid">
+        <h1>Login</h1>
+        <input id="ema" type="email" placeholder="Enter Your Email">
+        <input id="pass" type="password" placeholder="Enter Your Password">
+        <button onclick="mynew()">Submit</button>
+    </div>
+</body>
+</html>
+
+<script>
+ var obj = JSON.parse(localStorage.getItem("details")) 
+
+function mynew(){
+     var a=document.querySelector("#ema").value
+     var b=document.querySelector("#pass").value
+     if(obj.Email==a && obj.Password==b){
+
+        alert("Login Successfull")
+        window.location.href="index.html"
+     }
+     else{
+         alert("invalid Credentials")
+         window.location.reload()
+     }
+
+}
+
+</script>

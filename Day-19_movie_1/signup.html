@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fle{
+            display: flex;
+            justify-content:flex-end;
+            gap:50px;
+        }
+        a{
+            text-decoration: none;
+        }
+        button{
+            border:0px;
+            background-color: teal;
+            color:white;
+            width: 40%;
+            margin: auto;
+            height: 25px;
+            border-radius: 5px;
+        }
+        #grid{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            width:20%;
+            margin: auto;
+            text-align: center;
+            gap:20px;         
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+            height: 350px;
+        }
+        input{
+            height: 25px;
+            width:70%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="fle">
+        <div><a href="index.html">Home</a></div>
+        <div><a href="signup.html">Signup</a></div>
+        <div><a href="login.html">Login</a></div>
+    </div>
+
+    <div id="grid">
+        <h1>Signup</h1>
+        <input id="name" type="text" placeholder="Enter Your Name">
+        <input id="contact" type="number" placeholder="Enter Your Contact">
+        <input id="email" type="email" placeholder="Enter Your Email">
+        <input id="password" type="password" placeholder="Enter Your Password">
+        <button onclick="mysub()">Submit</button>
+    </div>
+</body>
+</html>
+
+<script>
+    //var arr = JSON.parse(localStorage.getItem("details")) || []
+
+    function mysub(){
+        var a=document.querySelector("#email").value
+        var b=document.querySelector("#password").value
+
+        var obj={
+            Email:a,
+            Password:b,
+        }
+       // arr.push(obj)
+        console.log(obj)
+        localStorage.setItem("details",JSON.stringify(obj))
+        alert("Signup Successfull")
+        window.location.href="login.html"
+    }
+
+
+
+
+
+</script>

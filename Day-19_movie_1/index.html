@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fle{
+            display: flex;
+            justify-content:flex-end;
+            gap:50px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="fle">
+        <div><a href="index.html">Home</a></div>
+        <div><a href="signup.html">Signup</a></div>
+        <div><a href="login.html">Login</a></div>
+    </div>
+    <input id="img" type="url" placeholder="Images url">
+    <button id="add" onclick="myadd()">Add Images</button>
+    <button id="show" onclick="myshow()">SlideShow</button>
+</body>
+</html>
+
+<script>
+
+function myshow(){
+    window.location.href="slideshow.html"
+}
+
+function myadd(){
+
+    let arr=JSON.parse(localStorage.getItem("images"))||[]
+    let im=document.querySelector("#img").value
+    arr.push(im)
+    console.log(arr)
+    localStorage.setItem("movies",JSON.stringify(arr))
+    document.querySelector("#img").value=null
+    
+}
+</script>
