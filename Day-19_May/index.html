@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #grid{
+          display: grid;
+          grid-template-columns: repeat(3,1fr);
+          gap:30px;
+          width: 90%;
+          margin: auto;
+      }
+      #fle{
+          display: flex;
+          width: 30%;
+          margin: auto;
+          margin-top: 50px;
+          margin-bottom: 40px;
+          gap:30px;
+         
+      }
+      button{
+          border: 0px;
+          border-radius: 5px;
+          background-color: blue;
+          color: white;
+          padding: 8px 12px 8px 12px;
+      }
+    </style>
+</head>
+<body>
+    <div id="fle">
+        <button id="sort-lh" onclick="mylh()">Sprt by low rating to high</button>
+        <button id="sort-hl" onclick="myhl()">Sort by High rating to low</button>
+</div>
+    
+    <div id="grid">
+        <!-- apppend your data here -->
+
+    </div>
+</body>
+</html>
+
+<script>
+
+    var arr=[
+    {"name":"The Avengers","release_date":"2012","IMDb_Rating":"8.0","Poster":"https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"},
+    {"name":"Avengers: Endgame","release_date":"2019","IMDb_Rating":"7.0","Poster":"https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"},
+    {"name":"Avengers: Infinity War","release_date":"2018","IMDb_Rating":"8.5","Poster":"https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"},
+    {"name":"Avengers: Age of Ultron","release_date":"2015","IMDb_Rating":"6.5","Poster":"https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg"},
+    {"name":"The Avengers","release_date":"1998","IMDb_Rating":"7.5","Poster":"https://m.media-amazon.com/images/M/MV5BYWE1NTdjOWQtYTQ2Ny00Nzc5LWExYzMtNmRlOThmOTE2N2I4XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg"},
+    {"name":"The Avengers: Earth's Mightiest Heroes","release_date":"2010–2012","IMDb_Rating":"9.0","Type":"series","Poster":"https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg"},
+    {"name":"Ultimate Avengers: The Movie","release_date":"2006","IMDb_Rating":"7.0","Poster":"https://m.media-amazon.com/images/M/MV5BMTYyMjk0NTMwMl5BMl5BanBnXkFtZTgwNzY0NjAwNzE@._V1_SX300.jpg"},
+    {"name":"Ultimate Avengers II","release_date":"2006","IMDb_Rating":"7.6","Poster":"https://m.media-amazon.com/images/M/MV5BZjI3MTI5ZTYtZmNmNy00OGZmLTlhNWMtNjZiYmYzNDhlOGRkL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"},
+    {"name":"The Avengers","release_date":"1961–1969","IMDb_Rating":"6.0","Poster":"https://m.media-amazon.com/images/M/MV5BZWQwZTdjMDUtNTY1YS00MDI0LWFkNjYtZDA4MDdmZjdlMDRlXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg"},
+    {"name":"Avengers Assemble","release_date":"2012–2019","IMDb_Rating":"6.8","Poster":"https://m.media-amazon.com/images/M/MV5BMTY0NTUyMDQwOV5BMl5BanBnXkFtZTgwNjAwMTA0MDE@._V1_SX300.jpg"}
+   ]
+
+    var x=document.querySelector("#grid")
+
+    displaydata(arr)
+    
+     function displaydata(arr){
+       
+     document.querySelector("#grid").innerHTML=""
+        
+     arr.forEach(function (el){
+
+        let a=document.createElement("div")
+        let b=document.createElement("img")
+        let c=document.createElement("h1")
+        let d=document.createElement("h2")
+        let e=document.createElement("h2")
+        b.src=el.Poster
+        c.innerText="Movie :"+el.name
+        d.innerText="Release Date :"+el.release_date
+        e.innerText="IMDb Rating :"+el.IMDb_Rating
+        a.append(b,c,d,e)
+        console.log(a)
+        x.append(a)
+        localStorage.setItem("images",JSON.stringify(arr))
+        
+    })
+    }
+
+    function mylh(){
+       arr.sort(function(a,b){
+           return a.IMDb_Rating-b.IMDb_Rating
+       })
+       displaydata(arr)
+    }
+
+    function myhl(){
+       arr.sort(function(a,b){
+           return b.IMDb_Rating-a.IMDb_Rating
+       })
+       displaydata(arr)
+    }
+
+
+</script>
