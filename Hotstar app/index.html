@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 175px;
+            height: 200px;
+            border:1px solid black;
+            overflow: scroll;
+
+        }
+        #newbox{
+            width: 30%;
+            margin: auto;
+        }
+        #upper{
+            text-transform:uppercase;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input oninput="debounceFunction(main,1000)" id="hi" type="text">
+    <div id="box" ></div>
+    <div id="newbox"></div>
+</body>
+</html>
+
+<script>
+
+let divbox = document.querySelector("#box")
+let newbox=document.querySelector("#newbox")
+let id;
+   async function mymovie(movie){
+     try{
+        let url= ` http://www.omdbapi.com/?s=${movie}&apikey=d810f6bd`
+        let res= await fetch(url)
+        let data= await res.json()
+        console.log(data)
+       // console.log(data.Search)
+        return data.Search
+
+     }
+     catch(error){
+        console.log("error :", error)
+     }
+    } 
+
+    function mynum(data){
+        
+        divbox.innerHTML=""
+        newbox.innerHTML=""
+        if(data===undefined){
+            return false;
+        }
+        data.forEach(function (el){
+            let c=document.createElement("p")
+            let d=document.createElement("img")
+            let h=document.createElement("h1")
+            let e=document.createElement("h2")
+            let f=document.createElement("h2")
+            let g=document.createElement("h3")
+
+            c.innerText= el.Title
+            d.src=el.Poster
+            h.innerText=el.Title
+            e.innerText="Year :"+el.Year
+            f.innerText="Type : "+el.Type
+            f.setAttribute("id","upper")
+            g.innerText="Imdb ID : "+el.imdbID
+            divbox.append(c)
+            newbox.append(d,h,e,f,g)
+        })   
+    }
+
+    async function main(){
+        let query = document.getElementById("hi").value
+        let response = mymovie(query)
+        let data = await response
+        //console.log(data)
+        mynum(data)
+
+    }
+
+    function debounceFunction(func,delay){
+        if(id){
+            clearTimeout(id)
+        }
+
+        id=setTimeout(function(){
+            func()
+        },delay)
+    }
+
+
+</script>
