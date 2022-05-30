@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
+    <style>
+        #app{
+            width:175px;
+            height: 200px;
+            border: 1px solid black;
+            overflow: scroll;
+
+            
+        }
+    </style>
+</head>
+<body>
+    <input id="input" oninput="debouncing(main,1000)" type="text">
+    <div id="app">
+
+    </div>
+</body>
+</html>
+
+<script>
+    // let url=`https://swapi.dev/api/people/?search=${Your_Team}`
+
+// var divbox = document.querySelector("#append")
+// let id;
+//    async function myteam(Your_Team){
+//      try{
+//         let url= `https://swapi.dev/api/people/?search=${Your_Team}`
+//         let res= await fetch(url)
+//         let data= await res.json()
+//         //  console.log(data)
+//           console.log(data.results)
+//         return data.results
+
+//      }
+//      catch(error){
+//         console.log("error :", error)
+//      }
+//     } 
+
+//     function mynum(data){
+
+//         divbox.innerHTML=""
+//         if(data===undefined){
+//             return false;
+//         }
+//         data.forEach(function (el){
+//             let c=document.createElement("p")
+//             c.innerText=el.name
+//             divbox.append(c)
+//         })   
+//     }
+
+//     async function main(){
+//         let query = document.getElementById("input").value
+//         let response = myteam(query)
+//         let data = await response
+//         //console.log(data)
+//         mynum(data)
+
+//     }
+
+    // function debounceFunction(func,delay){
+    //     if(id){
+    //         clearTimeout(id)
+    //     }
+
+    //     id=setTimeout(function(){
+    //         func()
+    //     },delay)
+    // }
+
+    let x=document.querySelector("#app")
+    let id;
+async function myname(){
+   try{
+    let Your_Team =document.querySelector("#input").value
+    let url = `https://swapi.dev/api/people/?search=${Your_Team}`
+
+    let res=await fetch(url)
+    let data=await res.json()
+    console.log(data.results)
+    //  append(data.results)
+    return data.results
+   }catch(error){
+      console.log("errror :",error)
+   }
+
+}
+
+function append(data){
+   
+    x.innerHTML=null
+    if(x===undefined){
+        return false
+    }
+    data.forEach(function(el){
+        var a=document.createElement("p")
+        a.innerText=el.name
+        x.append(a)
+    })
+}
+
+async function main(){
+    
+    let data =await myname()
+    append(data)
+}
+
+function debouncing(func,delay){
+    if(id){
+        clearTimeout(id)
+    }
+    id=setTimeout(function(){
+        func()
+    },delay)
+}
+
+</script>
