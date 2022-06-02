@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+   <style>
+       #box{
+           display:grid;
+           grid-template-columns: repeat(4,1fr);
+           gap:30px;
+           margin-top: 40px;
+          
+       }
+       h1{
+           text-align: center;
+           color: red;
+           font-size: 50px;
+           font-family:  sans-serif;
+           font-weight:900;
+       }
+       #new{
+           width: 25%;
+           margin: auto;
+           margin-left: 35%;
+           height: 22px;
+       }
+       #but{
+           padding: 5px 10px 5px 10px;
+           
+       }
+       #but:hover{
+          background-color:red;
+           color: white;
+           border: 0px;
+       }
+   </style>
+</head>
+<body>
+    <h1>Youtube</h1>
+    <input type="text" id="new">
+    <button id="but" onclick="mynum()">Search</button>
+     
+
+    <div id="box">
+
+    </div>
+</body>
+</html>
+
+<script src="alpha.js"></script>
