@@ -1,0 +1,28 @@
+#navbar{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+
+}
+#inpu{
+    width: 100%;
+    margin: auto;
+    height: 40px;
+    border: 1px solid teal;
+    border-radius: 25px;
+    font-size: large;
+}
+#category{
+    display: flex;
+    justify-content: space-around;
+}
+#category>h3{
+    border: 1px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 8px 10px 8px 10px;
+}
+#category>h3:hover{
+    color:white;
+    background-color: blue;
+}
