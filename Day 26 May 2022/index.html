@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
     <style>
+       
         body{
             background-color: rgb(162, 162, 218);
         }
@@ -58,10 +59,12 @@
         }
     </style>
 </head>
-<body>
+<body style="background-image: url(https://images.unsplash.com/photo-1591804227855-d6fe0b648d0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fHdlYXRoZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+background-size:cover ;
+background-repeat: no-repeat;">
     <h1>Today's Weather Report</h1>
     <div id="input">
-        <input placeholder="City" id="city" type="text">
+        <input placeholder="Enter Your City" id="city" type="text">
         <button onclick="myname()">Submit</button>
     </div>
     <div id="box">
